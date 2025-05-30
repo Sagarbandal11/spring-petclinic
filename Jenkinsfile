@@ -8,13 +8,13 @@ pipeline {
 
     environment {
         SONARQUBE = 'MySonarQube'
-        NEXUS_URL = 'git url: 'https://github.com/Sagarbandal11/spring-petclinic.git', branch: 'main'
+        NEXUS_URL = 'http://localhost:8081/repository/maven-releases/'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/spring-projects/spring-petclinic.git'
+                git 'https://github.com/Sagarbandal11/spring-petclinic.git', branch: 'main'
             }
         }
 
