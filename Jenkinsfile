@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         SONARQUBE = 'MySonarQube'
-        NEXUS_URL = 'https://github.com/Sagarbandal11/spring-petclinic.git'
+        NEXUS_URL = 'git url: 'https://github.com/Sagarbandal11/spring-petclinic.git', branch: 'main'
     }
 
     stages {
