@@ -59,7 +59,7 @@ pipeline {
         stage('Dockerize') {
             steps {
                 sh '''
-                docker build -t petclinic:1.0 .
+                DOCKER_BUILDKIT=0 docker build -t petclinic:1.0 .
                 docker tag petclinic:1.0 localhost:5000/petclinic:1.0
                 docker push localhost:5000/petclinic:1.0
                 '''
