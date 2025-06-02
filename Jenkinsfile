@@ -68,8 +68,8 @@ pipeline {
 
         stage('Deploy to K8s') {
             steps {
-                sh 'kubectl apply -f k8s/petclinic.yml'
                 sh 'kubectl apply -f k8s/db.yml'
+                 sh 'kubectl apply -f k8s/petclinic.yml'
             }
         }
     }
