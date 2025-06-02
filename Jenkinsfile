@@ -21,6 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install'
+                sh 'cp target/spring-petclinic-3.4.0-SNAPSHOT.jar target/petclinic.jar'
             }
         }
        
