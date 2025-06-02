@@ -23,6 +23,12 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+       
+        stage('Check JAR') {
+    steps {
+        sh 'ls -lh target'
+     }
+   }
 
         stage('Code Quality') {
             steps {
