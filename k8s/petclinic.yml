@@ -39,19 +39,27 @@ spec:
             - name: SPRING_APPLICATION_JSON
               value: |
                 {
-                  "management.endpoint.health.probes.add-additional-paths": true
+                  "management.endpoint.health.probes.add-additional-paths": true,
+                  "management.endpoints.web.exposure.include": "health,info,readiness,liveness",
+                  "management.endpoint.health.probes.enabled": true
                 }
           ports:
             - name: http
               containerPort: 8080
           livenessProbe:
             httpGet:
-              path: /livez
+              path: /actuator/health/liveness
               port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /actuator/health/readiness
               port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
           volumeMounts:
             - mountPath: /bindings/secret
               name: binding
